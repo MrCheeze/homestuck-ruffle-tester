@@ -48,11 +48,16 @@ div.sticky {
 		const container = document.getElementById("ruffleContainer");
 		container.appendChild(window.player);
 		
-		load('00001',650,450);
+		if (window.location.hash) {
+			load(window.location.hash.replace('#',''),650,450);
+		} else {
+			load('00001',650,450);
+		}
 		
 		document.querySelector('ruffle-player').shadowRoot.styleSheets[0].addRule('#play_button', 'display: none !important;'); // hack
 	});
 	function load(swfname, width, height) {
+		window.location.hash=swfname;
 		const fullUrl = "flash/"+swfname+".swf";
 		document.getElementById("download").href=fullUrl;
 		
