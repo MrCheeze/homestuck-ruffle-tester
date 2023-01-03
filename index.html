@@ -84,6 +84,23 @@ div.sticky {
 		document.querySelector("ruffle-player").pause();
 		//document.getElementById("flashPlayer").StopPlay();
 	}
+	function forward(n) {
+		var is_playing = document.querySelector("ruffle-player").contextMenuItems().filter(x => x && x.text=="Play").length == 0;
+		document.querySelector("ruffle-player").contextMenuItems().forEach(item => {
+			if (item && item.text=="Forward") {
+				for (var i=0; i<n; i++) {
+					item.onClick();
+				}
+			}
+		});
+		if (is_playing) {
+			document.querySelector("ruffle-player").contextMenuItems().forEach(item => {
+				if (item && item.text=="Play") {
+					item.onClick();
+				}
+			});
+		}
+	}
 </script>
 <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
 </head>
@@ -419,6 +436,11 @@ div.sticky {
 <a href="javascript:pause();">Pause</a>
 <a href="javascript:play();">Unpause</a>
 <a id="download">Download</a>
+<br/>
+<br/>
+<a href="javascript:forward(25);">Forward x25</a>
+<a href="javascript:forward(50);">Forward x50</a>
+<a href="javascript:forward(100);">Forward x100</a>
 </span>
 </div>
 
