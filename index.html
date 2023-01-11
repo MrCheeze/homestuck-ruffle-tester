@@ -6,9 +6,9 @@ body {
 	white-space: nowrap;
 	min-width: calc(950px + 200px);
 }
-.links {
-       position: relative;
-       z-index: 1000;
+.links a {
+	position: relative;
+	z-index: 1000;
 }
 div {
 	display: block;
@@ -29,6 +29,7 @@ div.sticky {
 	margin-left: auto;
 	margin-right: auto;
 }
+
 </style>
 <script>
 	window.RufflePlayer = window.RufflePlayer || {};
@@ -40,6 +41,8 @@ div.sticky {
 		"allowScriptAccess": true,
 		"letterbox": "off",
 		"upgradeToHttps": false,
+		"warnOnUnsupportedContent": false,
+		"logLevel": "info",
 	};
 	window.addEventListener("load", (event) => {
 		const ruffle = window.RufflePlayer.newest();
@@ -433,6 +436,7 @@ div.sticky {
 <tr><td><a href="javascript:load('captchas',880,400)">captchas.swf (AVM2)</a></td><td>PUNCH CARD CALCULATOR</td></tr>
 <tr><td><a href="javascript:load('cascade',950,650)">cascade.swf (Combined)</a></td><td>[S] Cascade.</td></tr>
 <tr><td><a href="javascript:load('cascade_loaderExt',950,650)">cascade_loaderExt.swf</a></td><td>[S] Cascade.</td></tr>
+<tr><td><a href="javascript:load('cascade_relative',950,650)">cascade_relative.swf</a></td><td>[S] Cascade.</td></tr>
 <tr><td><a href="javascript:load('cascade_segment1',950,650)">cascade_segment1.swf</a></td><td>[S] Cascade.</td></tr>
 <tr><td><a href="javascript:load('cascade_segment2',950,650)">cascade_segment2.swf</a></td><td>[S] Cascade.</td></tr>
 <tr><td><a href="javascript:load('cascade_segment3',950,650)">cascade_segment3.swf</a></td><td>[S] Cascade.</td></tr>
