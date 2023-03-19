@@ -38,7 +38,6 @@ div.sticky {
 		"autoplay": "on",
 		"letterbox": "off",
 		"unmuteOverlay": "hidden",
-		"allowScriptAccess": true,
 		"letterbox": "off",
 		"upgradeToHttps": false,
 		"warnOnUnsupportedContent": false,
@@ -67,7 +66,7 @@ div.sticky {
 		const fullUrl = "flash/"+swfname+".swf";
 		document.getElementById("download").href=fullUrl;
 		
-		window.player.load(fullUrl);
+		window.player.load({url: fullUrl, allowScriptAccess: true});
 		window.player.style.width=width+'px';
 		window.player.style.height=height+'px';
 		
