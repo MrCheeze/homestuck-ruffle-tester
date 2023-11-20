@@ -42,6 +42,7 @@ div.sticky {
 		"upgradeToHttps": false,
 		"warnOnUnsupportedContent": false,
 		"logLevel": "info",
+		"fontSources": ["homestuck-fonts.swf"],
 	};
 	window.addEventListener("load", (event) => {
 		const ruffle = window.RufflePlayer.newest();
@@ -120,10 +121,11 @@ div.sticky {
 		}
 	}
 </script>
-<script src="ruffle-courier-new-fork/ruffle.js"></script>
+<script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
 </head>
 <body>
 
+<!-- Device font usage: 00137:Courier New_13pt_st; 00246:Verdana; 00253:Courier New; 00253:Times New Roman; 02791:Courier New_14pt_st; 03740:VERDANA; 04817:Comic Sans MS -->
 <table class="links">
 <tr><td><a href="javascript:load('00001')">00001.swf</a></td><td>Homestuck BETA</td></tr>
 <tr><td><a href="javascript:load('00002')">00002.swf</a></td><td>Enter name.</td></tr>
