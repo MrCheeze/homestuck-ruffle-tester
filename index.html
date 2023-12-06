@@ -29,6 +29,14 @@ div.sticky {
 	margin-left: auto;
 	margin-right: auto;
 }
+.sticky table {
+	margin-left: auto;
+	margin-right: auto;
+}
+button {
+	min-width: 50px;
+	min-height: 30px;
+}
 
 </style>
 <script>
@@ -119,6 +127,43 @@ div.sticky {
 					item.onClick();
 				}
 			});
+		}
+	}
+	window.pressed = {};
+	function press(code) {
+		var key = null;
+		if (code.startsWith("Key")) {
+			key = code[3].toLowerCase();
+		}
+		document.querySelector('ruffle-player').shadowRoot.getElementById("unmute-overlay").click()
+		window.player.dispatchEvent(new PointerEvent("pointerdown"));
+		window.player.dispatchEvent(new KeyboardEvent("keydown", {code:code, key:key, bubbles:true}));
+		pressed[code] = true;
+	}
+	function release(code) {
+		var key = null;
+		if (code.startsWith("Key")) {
+			key = code[3].toLowerCase();
+		}
+		document.querySelector('ruffle-player').shadowRoot.getElementById("unmute-overlay").click()
+		window.player.dispatchEvent(new PointerEvent("pointerdown"));
+		window.player.dispatchEvent(new KeyboardEvent("keyup", {code:code, key:key, bubbles:true}));
+		delete pressed[code];
+	}
+	window.onpointerup = function() {
+		for (var code in pressed) {
+			if (code != "ShiftRight") {
+				release(code);
+			}
+		}
+	}
+	function toggleShift() {
+		if (!window.pressed["ShiftRight"]) {
+			press("ShiftRight");
+			document.getElementById("shiftButton").style.backgroundColor="#777";
+		} else {
+			release("ShiftRight");
+			document.getElementById("shiftButton").style.backgroundColor=null;
 		}
 	}
 </script>
@@ -459,6 +504,18 @@ div.sticky {
 <div class="sticky">
 <span id="ruffleContainer"></span>
 <span>
+<table class="center"><tr>
+<td><button onpointerdown="press('KeyZ')">Z</button></td>
+<td><button onpointerdown="press('KeyX')">X</button></td>
+<td><button onpointerdown="press('ArrowUp')">Up</button></td>
+<td><button onclick="toggleShift()" id="shiftButton">Shift</button></td>
+</tr><tr>
+<td><button onpointerdown="press('Space')">Space</button></td>
+<td><button onpointerdown="press('ArrowLeft')">Left</button></td>
+<td><button onpointerdown="press('ArrowDown')">Down</button></td>
+<td><button onpointerdown="press('ArrowRight')">Right</button></td>
+</tr></table>
+<br/>
 <a href="javascript:pause();">Pause</a>
 <a href="javascript:play();">Unpause</a>
 <a id="download">Download</a>
