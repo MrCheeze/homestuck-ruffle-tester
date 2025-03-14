@@ -52,6 +52,15 @@ button {
 		"logLevel": "info",
 		"fontSources": ["homestuck-fonts.swf","courier-new-pixel.swf"],
 		"defaultFonts": {"sans": ["Arial"], "serif": ["Times New Roman"], "typewriter": ["Courier New"]},
+		"urlRewriteRules": [
+			["http://www.mspaintadventures.com/storyfiles/hs2/songs/alterniaboundsongs/secretROM.mp3", "flash-assets/secretrom.mp3"], // capitalization issue, rule listed first to take precedence
+			[/http:\/\/www\.mspaintadventures\.com\/storyfiles\/hs2\/.+\/(.+)/, "flash-assets/$1"],
+			["http://www.turner.com/planet/mp3/cp_close.mp3", "flash-assets/cp_close.mp3"],
+			["http://fozzy42.com/SoundClips/Themes/Movies/Ghostbusters.mp3", "flash-assets/Ghostbusters.mp3"],
+			["http://pasko.webs.com/foreign/Aerosmith_-_I_Dont_Wanna_Miss_A_Thing.mp3", "flash-assets/Aerosmith_-_I_Dont_Wanna_Miss_A_Thing.mp3"],
+			["http://www.timelesschaos.com/transferFiles/618heircut.mp3", "flash-assets/618heircut.mp3"],
+			[/http:\/\/uploads\.ungrounded\.net\/userassets\/3591000\/3591093\/(cascade_segment[1-5]\.swf)/, "flash/$1"],
+		],
 	};
 	window.addEventListener("load", (event) => {
 		const ruffle = window.RufflePlayer.newest();
